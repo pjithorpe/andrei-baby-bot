@@ -51,15 +51,19 @@ bot.on('guildMemberSpeaking', (member, speaking) => {
                 sound = 'baby4.mp3'
                 soundNo = 1
         }
-
+        
         var broadcast = bot.createVoiceBroadcast().playFile('./sounds/' + sound);
-        var dispatcher = member.voiceChannel.connection.playBroadcast(broadcast);
+        if (member.voiceChannel.connection != null) {
+            var dispatcher = member.voiceChannel.connection.playBroadcast(broadcast);
+        }
     }
     else {
         var broadcast = bot.createVoiceBroadcast().playFile('./sounds/baby1.mp3');
-        var dispatcher = member.voiceChannel.connection.playBroadcast(broadcast);
-        dispatcher.end();
+        if (member.voiceChannel.connection != null) {
+            var dispatcher = member.voiceChannel.connection.playBroadcast(broadcast);
+            dispatcher.end();
+        }
     }
 })
 
-bot.login('');
+bot.login('MzMxMDE5MzQ5ODQ0Mjk1Njgx.DDriGQ.o-Av-w7yq3pTdbjpNuy0FbYTC8w');
