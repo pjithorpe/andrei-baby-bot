@@ -5,30 +5,31 @@ var soundNo = 1;
 bot.on('message', message => {
   // Voice only works in guilds, if the message does not come from a guild,
   // we ignore it
-  if (!message.guild) return;
-
-  if (message.content == '/join') {
-    // Only try to join the sender's voice channel if they are in one themselves
-    if (message.member.voiceChannel) {
-      message.member.voiceChannel.join();
-    } else {
-      message.reply('You need to join a voice channel first!');
-    }
-  }
-  else if (message.content == '/leave') {
-    if (message.member.voiceChannel) {
-        message.member.voiceChannel.leave();
-    }
-  }
+	if (!message.guild) return;
+	
+	if (message.content == '/join') {
+		// Only try to join the sender's voice channel if they are in one themselves
+		if (message.member.voiceChannel) {
+			message.member.voiceChannel.join();
+		} else {
+			message.reply('You need to join a voice channel first!');
+		}
+	}
+	else if (message.content == '/leave') {
+		if (message.member.voiceChannel) {
+			message.member.voiceChannel.leave();
+		}
+	}
+	else if(message.content == 'ping'){
+		message.channel.send('pong');
+	}
+	else if(message.content == '/myname'){
+		message.channel.send("Hey! You're not " + message.member.displayName + ". You're that scumbag " + message.author.username + "!");
+	}
 });
 
 bot.on('message', (message) => {
-    if(message.content == 'ping'){
-        message.channel.send('pong');
-    }
-    else if(message.content == '/myname'){
-        message.channel.send("Hey! You're not " + message.member.displayName + ". You're that scumbag " + message.author.username + "!");
-    }
+    
 })
 
 bot.on('guildMemberSpeaking', (member, speaking) => {
@@ -66,4 +67,4 @@ bot.on('guildMemberSpeaking', (member, speaking) => {
     }
 })
 
-bot.login('MzMxMDE5MzQ5ODQ0Mjk1Njgx.DDriGQ.o-Av-w7yq3pTdbjpNuy0FbYTC8w');
+bot.login('<BOT TOKEN>');
